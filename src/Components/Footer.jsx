@@ -42,7 +42,6 @@ const Footer = () => {
     );
     window.location.href = `mailto:info@thinksoft.com?subject=${subject}&body=${body}`;
 
-    // Reset form
     setName('');
     setEmail('');
     setMessage('');
@@ -50,10 +49,9 @@ const Footer = () => {
 
   return (
     <footer className="bg-white text-gray-600">
-      {/* Main Footer */}
+      {/* Main Footer Content */}
       <div className="py-12 px-4">
         <div className="max-w-7xl mx-auto">
-          {/* 3-Column Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Column 1: Logo + Description */}
             <div className="space-y-6">
@@ -65,8 +63,8 @@ const Footer = () => {
               </p>
             </div>
 
-            {/* Column 2: Navigation Links (3x3 style in 2 sub-columns) */}
-            <div className="grid grid-cols-3 gap-8">
+            {/* Column 2: Navigation Links (3 groups) */}
+            <div className="grid grid-cols-2 gap-8 lg:grid-cols-3">
               <div>
                 <h6 className="text-gray-900 font-bold mb-4">Company</h6>
                 <ul className="space-y-2 text-sm">
@@ -96,7 +94,7 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Column 3: Feedback Form + Social Media (RIGHT MOST) */}
+            {/* Column 3: Feedback Form (Right Most) */}
             <div className="space-y-6">
               <h6 className="text-gray-900 font-bold mb-3">Send us feedback</h6>
               <form onSubmit={handleFeedbackSubmit} className="space-y-3">
@@ -131,71 +129,69 @@ const Footer = () => {
                   Send Message
                 </button>
               </form>
-
-              {/* Social Media - Below Form */}
-              <div className="mt-6">
-                <h6 className="text-gray-900 font-bold mb-3">Follow us</h6>
-                <div className="flex space-x-4">
-                  <a
-                    href="https://www.linkedin.com/company/thinksoft-d-s/?originalSubdomain=pk"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-blue-600 transition"
-                    aria-label="LinkedIn"
-                  >
-                    <BsLinkedin className="h-5 w-5" />
-                  </a>
-                  <a
-                    href="https://facebook.com/yourpage" // 🔴 Replace with real URL
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-blue-600 transition"
-                    aria-label="Facebook"
-                  >
-                    <BsFacebook className="h-5 w-5" />
-                  </a>
-                  <a
-                    href="https://twitter.com/yourhandle" // 🔴 Replace with real URL
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-blue-600 transition"
-                    aria-label="Twitter"
-                  >
-                    <BsTwitter className="h-5 w-5" />
-                  </a>
-                  <a
-                    href="https://instagram.com/yourhandle" // 🔴 Replace with real URL
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-pink-500 transition"
-                    aria-label="Instagram"
-                  >
-                    <BsInstagram className="h-5 w-5" />
-                  </a>
-                  <a
-                    href="https://youtube.com/@yourchannel" // 🔴 Replace with real URL
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-red-600 transition"
-                    aria-label="YouTube"
-                  >
-                    <BsYoutube className="h-5 w-5" />
-                  </a>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar: Only copyright */}
+      {/* Bottom Bar: Copyright (left) + Follow Us (right) */}
       <div className="border-t border-gray-200 py-6 px-4">
-        <div className="max-w-7xl mx-auto text-center md:text-left">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm">Copyright ©️ 2025 ThinkSoft. All rights reserved.</p>
+          <div className="flex items-center gap-3">
+            <span className="text-sm text-gray-600">Follow us:</span>
+            <div className="flex space-x-3">
+              <a
+                href="https://www.linkedin.com/company/thinksoft-d-s/?originalSubdomain=pk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-blue-600 transition"
+                aria-label="LinkedIn"
+              >
+                <BsLinkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="https://facebook.com/yourpage"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-blue-600 transition"
+                aria-label="Facebook"
+              >
+                <BsFacebook className="h-5 w-5" />
+              </a>
+              <a
+                href="https://twitter.com/yourhandle"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-blue-600 transition"
+                aria-label="Twitter"
+              >
+                <BsTwitter className="h-5 w-5" />
+              </a>
+              <a
+                href="https://instagram.com/yourhandle"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-pink-500 transition"
+                aria-label="Instagram"
+              >
+                <BsInstagram className="h-5 w-5" />
+              </a>
+              <a
+                href="https://youtube.com/@yourchannel"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-red-600 transition"
+                aria-label="YouTube"
+              >
+                <BsYoutube className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Scroll to Top */}
+      {/* Scroll to Top Button */}
       {showTopBtn && (
         <button
           onClick={goToTop}
