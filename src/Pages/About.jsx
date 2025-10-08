@@ -1,6 +1,5 @@
 // src/pages/About.jsx
 import React from 'react';
-import logo from '.../public/thinksoft.png'
 const About = () => {
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -22,7 +21,7 @@ const About = () => {
           </p>
         </div>
         <div className="bg-gray-100 rounded-xl h-80 flex items-center justify-center">
-          <span className="text-gray-500">,<img src="./logo" alt="Company Logo" /></span>
+          <span className="text-gray-500"></span>
         </div>
       </div>
     </div>
