@@ -1,8 +1,27 @@
 // src/Pages/About.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+// Hero image
+import teamphoto from '../assets/aboutus.png';
+
+// Team photos
+import aliImg from '../assets/team/ali.jpg';
+import sanaImg from '../assets/team/sana.jpg';
+import usmanImg from '../assets/team/usman.jpg';
+import ayeshaImg from '../assets/team/ayesha.jpg';
+
+// Client logos
+import lebaraLogo from '../assets/clients/lebara.png';
+import confizLogo from '../assets/clients/confiz.png';
+import retailcoLogo from '../assets/clients/retailco.png';
+import fintechxLogo from '../assets/clients/fintechx.png';
+import healthplusLogo from '../assets/clients/healthplus.png';
+import taskflowLogo from '../assets/clients/taskflow.png';
+
 const About = () => {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
   // Stats
   const stats = [
     { value: '50+', label: 'Happy Clients' },
@@ -11,24 +30,23 @@ const About = () => {
     { value: '8+', label: 'Years of Excellence' },
   ];
 
-  // Team members (replace image paths when ready)
+  // Team members — now with imported images
   const team = [
-    { name: 'Ali Raza', role: 'CEO & Founder', img: '/team/ali.jpg' },
-    { name: 'Sana Khan', role: 'CTO', img: '/team/sana.jpg' },
-    { name: 'Usman Ahmed', role: 'Head of AI', img: '/team/usman.jpg' },
-    { name: 'Ayesha Malik', role: 'Cloud Architect', img: '/team/ayesha.jpg' },
+    { name: 'Ali Raza', role: 'CEO & Founder', img: aliImg },
+    { name: 'Sana Khan', role: 'CTO', img: sanaImg },
+    { name: 'Usman Ahmed', role: 'Head of AI', img: usmanImg },
+    { name: 'Ayesha Malik', role: 'Cloud Architect', img: ayeshaImg },
   ];
 
-  // Client logos (use grayscale for consistency)
-  const clients = [
-    '/clients/client1.png',
-    '/clients/client2.png',
-    '/clients/client3.png',
-    '/clients/client4.png',
-    '/clients/client5.png',
-    '/clients/client6.png',
-  ];
-
+// Client logos with real URLs
+const clients = [
+  { name: 'Lebara', logo: lebaraLogo, url: 'https://www.lebara.com/en/home.html' },
+  { name: 'Confiz', logo: confizLogo, url: 'https://www.confiz.com/' },
+  { name: 'RetailCo', logo: retailcoLogo, url: 'https://www.retailco.com.my/' },
+  { name: 'FintechX', logo: fintechxLogo, url: 'https://fintechx.digital/en' },
+  { name: 'Health-Plus', logo: healthplusLogo, url: 'https://health-plus.com/' },
+  { name: 'TaskFlow', logo: taskflowLogo, url: 'https://taskflowapp.com/' },
+];
   // Timeline
   const timeline = [
     { year: '2017', event: 'ThinkSoft founded in Lahore, Pakistan' },
@@ -40,6 +58,20 @@ const About = () => {
 
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      {/* Lightbox Modal */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+          onClick={() => setLightboxOpen(false)}
+        >
+          <img
+            src={teamphoto}
+            alt="ThinkSoft team"
+            className="max-w-full max-h-[90vh] object-contain"
+          />
+        </div>
+      )}
+
       {/* Hero */}
       <div className="text-center mb-16">
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">About ThinkSoft</h1>
@@ -60,27 +92,32 @@ const About = () => {
         </div>
       </div>
 
-     {/* Who We Are */}
-<div className="mb-16">
-  <h2 className="text-2xl font-bold text-gray-900 mb-6">Who We Are</h2>
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-    <div>
-      <p className="text-gray-600 mb-4">
-        ThinkSoft is a dynamic technology partner specializing in AI, data analytics, cloud transformation, and enterprise software solutions. With roots in Pakistan and a global footprint, we help organizations innovate, scale, and thrive in the digital age.
-      </p>
-      <p className="text-gray-600">
-        Our mission is to integrate Business Intelligence into every layer of your information systems—transforming data into decisions and ideas into impact.
-      </p>
-    </div>
-    <div className="bg-gray-100 rounded-xl overflow-hidden h-64 flex items-center justify-center">
-      <img
-        src=""
-        alt="ThinkSoft team at office"
-        className="w-full h-full object-cover"
-      />
-    </div>
-  </div>
-</div>
+      {/* Who We Are */}
+      <div className="mb-16">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">Who We Are</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <p className="text-gray-600 mb-4">
+              ThinkSoft is a dynamic technology partner specializing in AI, data analytics, cloud transformation, and enterprise software solutions. With roots in Pakistan and a global footprint, we help organizations innovate, scale, and thrive in the digital age.
+            </p>
+            <p className="text-gray-600">
+              Our mission is to integrate Business Intelligence into every layer of your information systems—transforming data into decisions and ideas into impact.
+            </p>
+          </div>
+          <div
+            className="bg-gray-100 rounded-xl overflow-hidden h-64 flex items-center justify-center cursor-pointer hover:opacity-90 transition"
+            onClick={() => setLightboxOpen(true)}
+            role="button"
+            aria-label="View full-size team photo"
+          >
+            <img
+              src={teamphoto}
+              alt="ThinkSoft team at office"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
 
       {/* Timeline */}
       <div className="mb-16">
@@ -102,38 +139,43 @@ const About = () => {
         <h2 className="text-2xl font-bold text-gray-900 mb-8">Meet Our Leadership</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {team.map((member, i) => (
-            <div key={i} className="text-center">
-              <div className="bg-gray-200 rounded-full w-32 h-32 mx-auto flex items-center justify-center mb-4">
-                <span className="text-gray-500 text-xs">Photo</span>
+            <div key={i} className="text-center group">
+              <div className="rounded-full w-32 h-32 mx-auto overflow-hidden border-2 border-white shadow-md group-hover:shadow-lg transition">
+                <img
+                  src={member.img}
+                  alt={member.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <h3 className="font-bold text-gray-900">{member.name}</h3>
-              <p className="text-gray-600 text-sm mt-1">{member.role}</p>
+              <h3 className="font-bold text-gray-900 mt-3">{member.name}</h3>
+              <p className="text-gray-600 text-sm">{member.role}</p>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Clients */}
-      <div className="mb-16">
-        <h2 className="text-2xl font-bold text-gray-900 mb-8">Trusted By</h2>
-        <div className="flex flex-wrap justify-center gap-8 md:gap-12 opacity-80">
-          {clients.map((logo, i) => (
-            <div key={i} className="h-10 flex items-center">
-              <img
-                src={logo}
-                alt={`Client ${i + 1}`}
-                className="h-full object-contain grayscale hover:grayscale-0 transition"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                }}
-              />
-            </div>
-          ))}
-        </div>
-        <p className="text-center text-gray-500 text-sm mt-4">
-          *Logos shown for illustrative purposes
-        </p>
-      </div>
+{/* Clients */}
+<div className="mb-16">
+  <h2 className="text-2xl font-bold text-gray-900 mb-8">Trusted By</h2>
+  <div className="flex flex-wrap justify-center gap-10 md:gap-18 opacity-90">
+    {clients.map((client, i) => (
+      <a
+        key={i}
+        href={client.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="h-18 flex items-center grayscale hover:grayscale-0 transition-opacity opacity-90 hover:opacity-100"
+        aria-label={`Visit ${client.name} website`}
+      >
+        <img
+          src={client.logo}
+          alt={client.name}
+          className="h-full object-contain max-w-full"
+        />
+      </a>
+    ))}
+  </div>
+</div>
 
       {/* CTA */}
       <div className="bg-blue-50 rounded-xl p-8 text-center">
