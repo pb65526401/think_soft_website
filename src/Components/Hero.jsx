@@ -5,6 +5,7 @@ import hero2 from '../assets/hero2.png';
 import hero3 from '../assets/hero3.png';
 import hero4 from '../assets/hero4.png';
 import hero5 from '../assets/hero5.png';
+import WhatWeDo from './WhatWeDo';
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -117,6 +118,7 @@ const Hero = () => {
           →
         </button>
       </div>
+      <WhatWeDo/>
     </div>
   );
 };
