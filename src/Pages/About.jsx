@@ -376,4 +376,4 @@ const About = () => {
   );
 };
 
-export default About;x
+export default About;
